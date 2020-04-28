@@ -6,6 +6,9 @@ let leftPic;
 let collage;
 let noPage;
 let link;
+let canvas;
+let canvasX;
+let canvasY;
 
 function preload(){
   myHero = loadImage('./images/myHero.webp');
@@ -18,7 +21,10 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(1000,600, WEBGL);
+  canvas = createCanvas(1000,600, WEBGL);
+  canvasX = (windowWidth - width)/2;
+  canvasY = (windowHeight - height)/2;
+  canvas.position(canvasX,canvasY);
   button1 = createButton('NO!');
   button2 = createButton('YES!');
   button1.hide();
@@ -70,11 +76,11 @@ function draw(){
     // button1 = createButton('NO!');
     // button2 = createButton('YES!');
     button1.show();
-    button1.position(600,400);
+    button1.position(canvasX+600,canvasY+400);
     button1.size(50,40);
 
     button2.show();
-    button2.position(500,400);
+    button2.position(canvasX+500,canvasY+400);
     button2.size(50,40);
 
   } else if(gamestate===3){
@@ -105,7 +111,7 @@ function draw(){
 
     // buttonThreeSetup();
     // buttonThree();
-    link = createA('https://rkodit2.github.io/MyFanpage/','Click me to learn more About My Hero Academia','_blank');
+    link = createA('https://rkodit2.github.io/MyFanpage/','Click me to learn more about My Hero Academia','_blank');
     link.position(600,500);
 
 
@@ -145,9 +151,9 @@ function buttonTwo(){
   gamestate=4;
 }
 
-function goToLink(){
-  window.open('https://google.com');
-}
+// function goToLink(){
+//   window.open('https://google.com');
+// }
 
 // function buttonThreeSetup{
 //   button3 = createButton('Click me to Learn More!');
