@@ -9,6 +9,17 @@ let link;
 let canvas;
 let canvasX;
 let canvasY;
+let gif1;
+let gif2;
+let gif3;
+let gif4;
+let gif5;
+let gif6;
+let gif7;
+let gif8;
+let gif9;
+let song;
+
 
 function preload(){
   myHero = loadImage('./images/myHero.webp');
@@ -17,7 +28,15 @@ function preload(){
   leftPic = loadImage('./images/leftPic.webp');
   collage = loadImage('./images/collage.jpg');
   noPage = loadImage('./images/noPage.jpg');
-
+  gif1 = loadImage('./images/gif1.gif');
+  gif2 = loadImage('./images/gif2.gif');
+  gif3 = loadImage('./images/gif3.gif');
+  gif4 = loadImage('./images/gif4.gif');
+  gif5 = loadImage('./images/gif5.gif');
+  gif6 = loadImage('./images/gif6.gif');
+  gif7 = loadImage('./images/gif7.gif');
+  gif8 = loadImage('./images/gif8.gif');
+  gif9 = loadImage('./images/gif9.gif');
 }
 
 function setup() {
@@ -29,6 +48,7 @@ function setup() {
   button2 = createButton('YES!');
   button1.hide();
   button2.hide();
+  song = loadSound('assets/song.mp3');
 
   // button3 = createButton('Click Me to Learn More!');
 }
@@ -123,7 +143,27 @@ function draw(){
 
 
   } else if(gamestate===4){
-    background(255,165,0);
+    background(0);
+
+    textFont(bangers);
+    textSize(40);
+    textAlign(CENTER);
+    textStyle(BOLD);
+    fill(255,255,255);
+    text('Here are some gifs for you to enjoy then!',20,-250);
+
+    image(gif1,-500,-230,300,150);
+    image(gif2,-150,-230,300,150);
+    image(gif3,200,-230,300,150);
+
+    image(gif4,-500,-50,300,150);
+    image(gif5,-150,-50,300,150);
+    image(gif6,200,-50,300,150);
+
+    image(gif7,-500,130,300,150);
+    image(gif8,-150,130,300,150);
+    image(gif9,200,130,300,150);
+
     let time = millis();
     rotateX(time/1000);
     rotateZ(time/1234);
@@ -137,6 +177,11 @@ function mousePressed(){
     gamestate=2;
   button1.mousePressed(buttonOne);
   button2.mousePressed(buttonTwo);
+  if(song.isPlaying()){
+    song.stop();
+  } else{
+    song.play();
+  }
   // link.mousePressed(goToLink);
   // button3.mousePressed(goToLink);
   }
